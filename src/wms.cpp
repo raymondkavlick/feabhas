@@ -58,5 +58,6 @@ void WMS::seg_blank()
 
 void WMS::seg_set(unsigned int digit)
 {
+    *odr &= ~0xF00;
     *odr |= digit << 8;
 }
