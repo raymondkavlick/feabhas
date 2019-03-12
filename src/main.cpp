@@ -2,20 +2,20 @@
 #include <cstdint>
 #include "Timer.h"
 #include "wms.h"
-
+#include "step.h"
 
 int main()
 {
-    WMS::gpio_init();
-    WMS::motor_off();
-    while(true)
-    {
-     // std::cout << "tick\n";
-      sleep(1000);
-      WMS::show_array();
-    }
-      // WMS::motor_on();
-      sleep(1000);
-      WMS::motor_chg_dir();
-    
+    Step fill {};
+    Step wash {};
+    Step empty {};
+
+    fill.set_number(2);
+    wash.set_number(4);
+    empty.set_number(1);
+
+    fill.run();
+    wash.run();
+    empty.run();
+
 }
