@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  11 .ARM.attributes 00000031  00000000  00000000  00040352  2**0
                   CONTENTS, READONLY
- 12 .debug_aranges 00000400  00000000  00000000  00040383  2**0
+ 12 .debug_aranges 00000410  00000000  00000000  00040383  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_info   0000a152  00000000  00000000  00040783  2**0
+ 13 .debug_info   0000a1a4  00000000  00000000  00040793  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_abbrev 00002026  00000000  00000000  0004a8d5  2**0
+ 14 .debug_abbrev 00002061  00000000  00000000  0004a937  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_line   00003c59  00000000  00000000  0004c8fb  2**0
+ 15 .debug_line   00003c7b  00000000  00000000  0004c998  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  00014bf4  00000000  00000000  00050554  2**2
+ 16 .debug_frame  00014c14  00000000  00000000  00050614  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_str    0004abe9  00000000  00000000  00065148  2**0
+ 17 .debug_str    0004ac21  00000000  00000000  00065228  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_loc    00001ac7  00000000  00000000  000afd31  2**0
+ 18 .debug_loc    00001ae8  00000000  00000000  000afe49  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .debug_ranges 00000398  00000000  00000000  000b17f8  2**0
+ 19 .debug_ranges 000003a8  00000000  00000000  000b1931  2**0
                   CONTENTS, READONLY, DEBUGGING
- 20 .debug_macro  00010e9c  00000000  00000000  000b1b90  2**0
+ 20 .debug_macro  00010e9c  00000000  00000000  000b1cd9  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .isr_vector:
@@ -593,7 +593,7 @@ Disassembly of section .text:
  8000444:	b508      	push	{r3, lr}
   WMS::gpio_init();
  8000446:	f000 f81b 	bl	8000480 <_ZN3WMS9gpio_initEv>
-    WMS::motor_on();
+  WMS::motor_on();
  800044a:	f000 f825 	bl	8000498 <_ZN3WMS8motor_onEv>
     sleep(1000);
  800044e:	f44f 707a 	mov.w	r0, #1000	; 0x3e8

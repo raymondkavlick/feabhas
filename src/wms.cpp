@@ -51,3 +51,12 @@ void WMS::motor_chg_dir()
 	
 }
 
+void WMS::seg_blank()
+{
+    *odr &= 0xF00;
+}
+
+void WMS::seg_set(unsigned int digit)
+{
+    *odr |= digit << 8;
+}

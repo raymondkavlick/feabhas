@@ -8,7 +8,7 @@
 int main()
 {
   WMS::gpio_init();
-    WMS::motor_on();
+  WMS::motor_on();
   while(true)
   {
     //std::cout << "Tick..." << std::endl;
