@@ -4,23 +4,18 @@
 #include "wms.h"
 
 
-
 int main()
 {
-  WMS::gpio_init();
-  WMS::motor_on();
-  while(true)
-  {
-    for(int i = 0; i < 10; i++)
+    WMS::gpio_init();
+    WMS::motor_off();
+    while(true)
     {
-      WMS::seg_set(i);
-    //std::cout << "Tick..." << std::endl;
-    sleep(1000);
-  }
-   // WMS::motor_on();
-    sleep(1000);
-    WMS::motor_chg_dir();
-  }
-
-
+     // std::cout << "tick\n";
+      sleep(1000);
+      WMS::show_array();
+    }
+      // WMS::motor_on();
+      sleep(1000);
+      WMS::motor_chg_dir();
+    
 }

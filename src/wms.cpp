@@ -1,6 +1,8 @@
 #include "wms.h"
 #include <cstdint>
 #include "Peripherals.h"
+#include "Timer.h"
+#include <array>
 
 
 namespace WMS
@@ -12,12 +14,31 @@ volatile std::uint32_t * const odr = {reinterpret_cast<std::uint32_t*>(0x40020C1
 constexpr std::uint32_t const MOTOR{0x1000};
 constexpr std::uint32_t const DIR{0x2000};
 
-constexpr std::uint32_t const GPIO_OUT{0b10};
-
 bool olddir = 0;
+#pragma pack(1)
 
+struct flash_object
+{
+    uint8_t number;
+    uint8_t repeat_amount;
+    uint32_t delay_between_ms;
+};
+#pragma pack()
+static_assert(sizeof(flash_object) == 6);
+
+
+std::array<flash_object,5>arr{{
+
+flash_object{1,2,250},
+flash_object{2,2,250},
+flash_object{3,2,250},
+flash_object{4,2,250},
+flash_object{5,2,250},
+
+}};
 
 }
+
 
 void WMS::gpio_init()
 {
@@ -53,11 +74,27 @@ void WMS::motor_chg_dir()
 
 void WMS::seg_blank()
 {
-    *odr &= 0xF00;
+    *odr &= ~0xF00;
 }
 
 void WMS::seg_set(unsigned int digit)
 {
     *odr &= ~0xF00;
     *odr |= digit << 8;
+}
+
+void WMS::show_array()
+{
+    for(auto& elem : arr)
+    {
+        for(auto i = 0; i < elem.repeat_amount; ++i)
+        {
+            seg_set(elem.number);
+            sleep(elem.delay_between_ms);
+            seg_blank();
+            sleep(elem.delay_between_ms);
+        }
+
+    }
+
 }
