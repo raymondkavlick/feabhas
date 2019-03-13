@@ -14,5 +14,15 @@ void Step::run()
 Step::~Step(void)
 {
     std::cout << "Deleted!";
+}
 
+Step::Step(int init_state)
+{
+    state = init_state;
+    std::cout << "Init. State = " << init_state << std::endl;
+}
+
+Step::Step()
+{
+    std::cout << "Default Const. called.\n";
 }

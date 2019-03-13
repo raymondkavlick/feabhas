@@ -6,9 +6,9 @@
 
 int main()
 {
-    Step fill {};
-    Step wash {};
-    Step empty {};
+    Step fill{};
+    Step wash{4};
+    Step empty{1};
 
     fill.set_number(2);
     wash.set_number(4);
