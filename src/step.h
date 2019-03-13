@@ -4,10 +4,11 @@ class Step
 {
     public:
         Step();
-        Step(int);
+        explicit Step(int);
         ~Step(void);
+        Step(const Step&) = delete;
         void set_number(int);
-        void run();
+        void run() const;
     private:
         int state;
         int get_step();

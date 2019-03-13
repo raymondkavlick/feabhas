@@ -6,7 +6,7 @@ void Step::set_number(int num)
     state = num;
 }
 
-void Step::run()
+void Step::run() const
 {
     std::cout << "run () - Step Number = " << state << "\n";
 }

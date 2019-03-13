@@ -6,7 +6,7 @@
 
 int main()
 {
-    Step fill{};
+    Step fill{3};
     Step wash{4};
     Step empty{1};
 
@@ -17,5 +17,7 @@ int main()
     fill.run();
     wash.run();
     empty.run();
+
+
 
 }

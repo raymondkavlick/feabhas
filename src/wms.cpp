@@ -4,17 +4,17 @@
 #include "Timer.h"
 #include <array>
 
-
 namespace WMS
 {
-volatile std::uint32_t * const moder = {reinterpret_cast<std::uint32_t*>(0x40020C00)};
-volatile std::uint32_t * const idr = {reinterpret_cast<std::uint32_t*>(0x40020C10)};
-volatile std::uint32_t * const odr = {reinterpret_cast<std::uint32_t*>(0x40020C14)};
+    volatile std::uint32_t * const moder = {reinterpret_cast<std::uint32_t*>(0x40020C00)};
+    volatile std::uint32_t * const idr = {reinterpret_cast<std::uint32_t*>(0x40020C10)};
+    volatile std::uint32_t * const odr = {reinterpret_cast<std::uint32_t*>(0x40020C14)};
 
-constexpr std::uint32_t const MOTOR{0x1000};
-constexpr std::uint32_t const DIR{0x2000};
+    constexpr std::uint32_t const MOTOR{0x1000};
+    constexpr std::uint32_t const DIR{0x2000};
 
-bool olddir = 0;
+    bool olddir = 0;
+
 #pragma pack(1)
 
 struct flash_object
@@ -68,8 +68,6 @@ void WMS::motor_chg_dir()
         *odr &= ~DIR;
         olddir = 1;
     }
-	
-	
 }
 
 void WMS::seg_blank()
