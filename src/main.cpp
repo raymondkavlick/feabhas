@@ -3,21 +3,41 @@
 #include "Timer.h"
 #include "wms.h"
 #include "step.h"
+#include <array>
+
+void wash_ref(const std::array<Step*,10> & arr)
+{
+    for(auto &elem : arr)
+        elem->run();
+}
+void wash(std::array<Step,10> arr)
+{
+    for(auto &elem : arr)
+        elem.run();
+}
 
 int main()
 {
-    Step fill{3};
-    Step wash{4};
-    Step empty{1};
+    std::array<Step,10> step_arr
+    {{
+        Step{Step::FILL},
+        Step{Step::HEAT},
+        Step{Step::WASH},
+        Step{Step::EMPTY},
+        Step{Step::FILL},
+        Step{Step::RINSE},
+        Step{Step::EMPTY},
+        Step{Step::SPIN},
+        Step{Step::DRY},
+        Step{Step::COMPLETE},
+    }};
 
-    fill.set_number(2);
-    wash.set_number(4);
-    empty.set_number(1);
+    std::array<Step*,10> step_arr_ptr{};
 
-    fill.run();
-    wash.run();
-    empty.run();
+    for(int i = 0; i < 10; i++)
+        step_arr_ptr[i] = &step_arr[i];
 
-
+   // wash(step_arr);
+    wash_ref(step_arr_ptr);
 
 }

@@ -6,6 +6,7 @@
 
 namespace WMS
 {
+
     volatile std::uint32_t * const moder = {reinterpret_cast<std::uint32_t*>(0x40020C00)};
     volatile std::uint32_t * const idr = {reinterpret_cast<std::uint32_t*>(0x40020C10)};
     volatile std::uint32_t * const odr = {reinterpret_cast<std::uint32_t*>(0x40020C14)};
