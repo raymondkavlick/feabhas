@@ -25,7 +25,7 @@ struct flash_object
     uint32_t delay_between_ms;
 };
 #pragma pack()
-static_assert(sizeof(flash_object) == 6);
+static_assert(sizeof(flash_object) == 6,"SIZE FLASH OBJECT NOT PACKED");
 
 
 std::array<flash_object,5>arr{{

@@ -6,7 +6,7 @@ class Step
         explicit Step();
         explicit Step(int);
         ~Step(void);
-        //Step(const Step&) = delete;
+        Step(const Step&) = delete;
         void set_number(int);
         void run() const;
         enum step_types

@@ -102,6 +102,7 @@ env.Append(CCFLAGS = [
     '-fno-move-loop-invariants',
     '-Wall',
     '-Wextra',
+    '-std=c++17',
     '-g3',] + cortex_m4_flags)
 
 
