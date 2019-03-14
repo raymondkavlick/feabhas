@@ -20,7 +20,7 @@ namespace STM32F407
         bool is_set();
     private:
         volatile std::uint32_t * const base_address;
-        unsigned int num;
+        const unsigned int num;
 
         enum offsets
         {   

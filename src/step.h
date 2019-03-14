@@ -1,14 +1,9 @@
 #pragma once
+class Seven_segment;
 
 class Step
 {
     public:
-        explicit Step();
-        explicit Step(int);
-        ~Step(void);
-        Step(const Step&) = delete;
-        void set_number(int);
-        void run() const;
         enum step_types
         {
             EMPTY = 1,
@@ -18,9 +13,14 @@ class Step
             RINSE,
             SPIN,
             DRY,
-            COMPLETE
+            COMPLETE,
         };
+        Step(step_types, Seven_segment &);
+        ~Step(void);
+        void set_number(step_types);
+        void run() const;
     private:
-        int state;
+        step_types state;
+        Seven_segment & ss;
         int get_step();
 };

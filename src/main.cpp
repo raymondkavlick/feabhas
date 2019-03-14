@@ -10,21 +10,21 @@
 
 int main()
 {
-    WMS::Seven_segment display{};
+    Seven_segment ss{};
     WMS::Motor motor{};
 
     std::array<Step,10> step_arr
     {
-        Step{Step::FILL},
-        Step{Step::HEAT},
-        Step{Step::WASH},
-        Step{Step::EMPTY},
-        Step{Step::FILL},
-        Step{Step::RINSE},
-        Step{Step::EMPTY},
-        Step{Step::SPIN},
-        Step{Step::DRY},
-        Step{Step::COMPLETE},
+        Step{Step::FILL,ss},
+        Step{Step::HEAT,ss},
+        Step{Step::WASH,ss},
+        Step{Step::EMPTY,ss},
+        Step{Step::FILL,ss},
+        Step{Step::RINSE,ss},
+        Step{Step::EMPTY,ss},
+        Step{Step::SPIN,ss},
+        Step{Step::DRY,ss},
+        Step{Step::COMPLETE,ss},
     };
 
     std::array<Step*,10> step_arr_ptr{};
@@ -32,6 +32,7 @@ int main()
     for(int i = 0; i < 10; i++)
         step_arr_ptr[i] = &step_arr[i];
 
-    //wash(step_arr);
-    //wash_ref(step_arr_ptr);
+    for(auto &elem : step_arr_ptr)
+        elem->run();
+
 }

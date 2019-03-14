@@ -1,7 +1,5 @@
 #include "seven_segment.h"
 
-namespace WMS
-{
 
 Seven_segment::Seven_segment()
 {
@@ -47,5 +45,3 @@ void Seven_segment::display(unsigned int digit)
         led3.clear();
 }
 
-
-}

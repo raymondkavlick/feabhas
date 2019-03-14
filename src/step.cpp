@@ -1,13 +1,17 @@
 #include "step.h"
 #include <iostream>
+#include "seven_segment.h"
+#include "Timer.h"
 
-void Step::set_number(int num)
+void Step::set_number(step_types num)
 {
     state = num;
 }
 
 void Step::run() const
 {
+    ss.display(state);
+    sleep(1000);
     std::cout << "run () - Step Number = " << state << "\n";
 }
 
@@ -16,13 +20,8 @@ Step::~Step(void)
     std::cout << "Deleted!";
 }
 
-Step::Step(int init_state)
+Step::Step(step_types init_state, Seven_segment & ssref) :
+    state {init_state},
+    ss { ssref }
 {
-    state = init_state;
-    std::cout << "Init. State = " << init_state << std::endl;
-}
-
-Step::Step()
-{
-    std::cout << "Default Const. called.\n";
 }
