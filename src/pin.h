@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Peripherals.h"
 #include <cstdint>
 #include <array>
@@ -11,11 +13,11 @@ namespace STM32F407
     public:
         explicit Pin(Peripheral::AHB1_Device port, unsigned int pin_num);
     
-        void set_as_input(){    *(base_address + MODER) |= (INPUT << (num * 2));}
-        void set_as_output(){   *(base_address + MODER) |= (OUTPUT << (num * 2));}
-        void set(){     *(base_address + ODR) |= (1 << num);}
-        void clear(){   *(base_address + ODR) &= ~(1 << num);}
-        bool is_set(){  return (*(base_address + ODR) & (1 << num));}
+        void set_as_input();
+        void set_as_output();
+        void set();
+        void clear();
+        bool is_set();
     private:
         volatile std::uint32_t * const base_address;
         unsigned int num;
@@ -23,8 +25,8 @@ namespace STM32F407
         enum offsets
         {   
             MODER = 0,
-            IDR = 0x10,
-            ODR = 0x14
+            IDR = 4,
+            ODR = 5
         };
 
 

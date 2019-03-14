@@ -5,25 +5,13 @@
 #include "step.h"
 #include <array>
 #include "pin.h"
-
-
+#include "seven_segment.h"
+#include "motor.h"
 
 int main()
 {
-    STM32F407::Pin led1{STM32F407::Peripheral::GPIO_D,12};
-    STM32F407::Pin led2{STM32F407::Peripheral::GPIO_D,11};
-    STM32F407::Pin led3{STM32F407::Peripheral::GPIO_D,10};
-    STM32F407::Pin led4{STM32F407::Peripheral::GPIO_D,9};
-
-    led1.set_as_output();
-    led2.set_as_output();
-    led3.set_as_output();
-    led4.set_as_output();
-
-    led1.set();
-    led2.set();
-    led3.set();
-    led4.set();
+    WMS::Seven_segment display{};
+    WMS::Motor motor{};
 
     std::array<Step,10> step_arr
     {
@@ -46,10 +34,4 @@ int main()
 
     //wash(step_arr);
     //wash_ref(step_arr_ptr);
-}
-
-void wash_ref(const std::array<Step*,10> & arr)
-{
-    for(auto &elem : arr)
-        elem->run();
 }
