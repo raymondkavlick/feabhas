@@ -19,17 +19,17 @@ namespace STM32F407
 
     void Pin::set_as_output()
     {  
-            *(base_address + MODER) |= (OUTPUT << (num * 2));
+        *(base_address + MODER) |= (OUTPUT << (num * 2));
     };
 
     void Pin::set()
     {   
-                *(base_address + ODR) |= (1 << num);
+        *(base_address + ODR) |= (1 << num);
     };
 
     void Pin::clear()
     {  
-                *(base_address + ODR) &= ~(1 << num);
+        *(base_address + ODR) &= ~(1 << num);
     };
 
     bool Pin::is_set(){  return (*(base_address + ODR) & (1 << num));};
