@@ -7,32 +7,40 @@
 #include "pin.h"
 #include "seven_segment.h"
 #include "motor.h"
+#include "Wash.h"
+#include "WashStep.h"
+#include "Rinse_step.h"
+#include "Spin_step.h"
 
 int main()
 {
     Seven_segment ss{};
     WMS::Motor motor{};
 
-    std::array<Step,10> step_arr
+    Step empty{Step::EMPTY,ss};
+    Step fill{Step::FILL,ss};
+    Step heat{Step::HEAT,ss};
+    WashStep wash{ss,motor};
+    RinseStep rinse{ss,motor};
+    SpinStep spin{ss,motor};
+    Step dry{Step::DRY,ss};
+    Step comp{Step::COMPLETE,ss};
+
+    std::array<Step *,8> step_arr_ptr
     {
-        Step{Step::FILL,ss},
-        Step{Step::HEAT,ss},
-        Step{Step::WASH,ss},
-        Step{Step::EMPTY,ss},
-        Step{Step::FILL,ss},
-        Step{Step::RINSE,ss},
-        Step{Step::EMPTY,ss},
-        Step{Step::SPIN,ss},
-        Step{Step::DRY,ss},
-        Step{Step::COMPLETE,ss},
+        &empty,
+        &fill,
+        &heat,
+        &wash,
+        &rinse,
+        &spin,
+        &dry,
+        &comp
     };
 
-    std::array<Step*,10> step_arr_ptr{};
-
-    for(int i = 0; i < 10; i++)
-        step_arr_ptr[i] = &step_arr[i];
-
-    for(auto &elem : step_arr_ptr)
-        elem->run();
+    Wash cycle{step_arr_ptr};
+    cycle.operate();
+    
+    while(1);
 
 }

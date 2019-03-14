@@ -18,7 +18,7 @@ class Step
         Step(step_types, Seven_segment &);
         ~Step(void);
         void set_number(step_types);
-        void run() const;
+        virtual void run();
     private:
         step_types state;
         Seven_segment & ss;

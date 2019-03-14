@@ -8,11 +8,11 @@ void Step::set_number(step_types num)
     state = num;
 }
 
-void Step::run() const
+void Step::run()
 {
     ss.display(state);
     sleep(1000);
-    std::cout << "run () - Step Number = " << state << "\n";
+    //std::cout << "run () - Step Number = " << state << "\n";
 }
 
 Step::~Step(void)
