@@ -20,7 +20,6 @@
 
 int main()
 {
-
     WMS::Motor motor{};
     Seven_segment ss{};
 

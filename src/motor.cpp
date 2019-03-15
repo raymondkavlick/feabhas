@@ -10,6 +10,8 @@
 #include "Thread.h"
 #include <iostream>
 #include "Duration.h"
+#include <atomic>
+#include "Mutex.h"
 using namespace FeabhOS::Time;
 namespace WMS{
 
@@ -42,9 +44,9 @@ void Motor::change_direction()
 
 void Motor::run()
 {
+    std:atomic<bool> mutex;
     while(1)
     {
-        
         FeabhOS::Thread::sleep(500_ms);
         std::cout << "Motor!\r\n";
     }
