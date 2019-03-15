@@ -1,5 +1,11 @@
 #include "seven_segment.h"
 
+#include "Scheduler.h"
+#include "Thread.h"
+#include <iostream>
+#include "Duration.h"
+
+using namespace FeabhOS::Time;
 
 Seven_segment::Seven_segment()
 {
@@ -43,5 +49,14 @@ void Seven_segment::display(unsigned int digit)
         led3.set();
     else
         led3.clear();
+}
+
+void Seven_segment::run()
+{
+    while(1)
+    {
+        FeabhOS::Thread::sleep(1000_ms);
+        std::cout << "Seven Seg!\r\n";
+    }
 }
 

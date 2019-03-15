@@ -2,13 +2,19 @@
 
 #include "motor.h"
 #include "pin.h"
+#include "Scheduler.h"
+#include "Thread.h"
+#include "Duration.h"
 
+#include "Scheduler.h"
+#include "Thread.h"
+#include <iostream>
+#include "Duration.h"
+using namespace FeabhOS::Time;
 namespace WMS{
 
 Motor::Motor()
 {
-    //STM32F407::Pin motor_control_pin{STM32F407::Peripheral::GPIO_D,12};
-    //STM32F407::Pin motor_dir_pin{STM32F407::Peripheral::GPIO_D,13};
     off();
 }
 
@@ -32,6 +38,16 @@ void Motor::change_direction()
     else
         motor_dir_pin.set();
     
+}
+
+void Motor::run()
+{
+    while(1)
+    {
+        
+        FeabhOS::Thread::sleep(500_ms);
+        std::cout << "Motor!\r\n";
+    }
 }
 
 }

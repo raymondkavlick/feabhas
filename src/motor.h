@@ -12,6 +12,7 @@ namespace WMS
         void on();
         void off();
         void change_direction();
+        void run();
 
     private:
         STM32F407::Pin motor_control_pin{STM32F407::Peripheral::GPIO_D,12};

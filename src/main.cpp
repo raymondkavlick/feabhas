@@ -11,11 +11,34 @@
 #include "WashStep.h"
 #include "Rinse_step.h"
 #include "Spin_step.h"
+#include "SerialPort.h"
+#include "Output_device.h"
+#include "Scheduler.h"
+#include "Thread.h"
+#include "Duration.h"
+
 
 int main()
 {
-    Seven_segment ss{};
+
     WMS::Motor motor{};
+    Seven_segment ss{};
+
+    FeabhOS::Scheduler::init();
+
+    FeabhOS::Thread thread1{};
+    FeabhOS::Thread thread2{};
+
+    thread1.attach(&WMS::Motor::run, &motor);  // motor.run();
+    thread2.attach(&Seven_segment::run,&ss);
+
+    FeabhOS::Scheduler::start();
+
+    /*
+    WMS::Motor motor{};
+    STM32F407::SerialPort port{};
+    WMS::OutputDevice dev{};
+    Seven_segment ss{};
 
     Step empty{Step::EMPTY,ss};
     Step fill{Step::FILL,ss};
@@ -41,6 +64,6 @@ int main()
     Wash cycle{step_arr_ptr};
     cycle.operate();
     
-    while(1);
+    while(1);*/
 
 }

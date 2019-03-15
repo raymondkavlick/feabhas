@@ -10,6 +10,7 @@ class Seven_segment
 
         void display(unsigned int val);
         void blank();
+        void run();
     private:
         STM32F407::Pin led6{STM32F407::Peripheral::GPIO_D,8};
         STM32F407::Pin led5{STM32F407::Peripheral::GPIO_D,9};
